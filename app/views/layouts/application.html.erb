@@ -21,21 +21,32 @@
           <a href="/users_sign_up">Sign Up</a>
         </li>
         <li>
+          <a href="/users_sign_out">Sign Out</a>
+        </li>
+        <li>
           <a href="/users">Users</a>
         </li>
         <li>
           <a href="/photos">Photos</a>
         </li>
+        <li>
+          <%= session.fetch(:user_id)%>
+        </li>
+    
       </ul>
     </nav>
 
-    <div>
-      <%= notice %>
-    </div>
+    <% if notice.present?%>
+      <div style="border: thin green solid; color: green">
+        <%= notice %>
+      </div>
+    <% end %>
 
-    <div>
-      <%= alert %>
-    </div>
+   <% if alert.present?%>
+      <div style= "border: thin red solid; color: red">
+        <%= alert %>
+     </div>
+    <% end %>
 
     <%= yield %>
   </body>

@@ -1,9 +1,16 @@
 class UsersController < ApplicationController
+  def toast
+    reset_session
+
+    redirect_to("/", {:notice => "See you later!"})
+  end
+ 
+ 
   def new_registration_form
     render({:template => "users/signup_form.html.erb"})
   end
   
-  
+ 
   def index
     @users = User.all.order({ :username => :asc })
 
@@ -27,6 +34,8 @@ class UsersController < ApplicationController
     save_status = user.save
 
     if save_status == true
+      session.store(:user_id, user.id)
+
       redirect_to("/users/#{user.username}", {:notice => "Welcome," + user.username + "!" })
     else
       redirect_to("/users_sign_up", {:alert => user.errors.full_messages.to_sentence})
