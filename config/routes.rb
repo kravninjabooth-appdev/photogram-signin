@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # User routes
 
-  get("/user_sign_up", {:controller => "users", :action => "new_registration_form"})
+  get("/users_sign_up", {:controller => "users", :action => "new_registration_form"})
 
   # CREATE
   get("/insert_user_record", {:controller => "users", :action => "create" })
