@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     #if there is no record, redirect back to sign in form
     if user == nil
-      redirect_to("/users_sign_in", {:alert => "No one by that name"})
+      redirect_to("/user_sign_in", {:alert => "No one by that name"})
     else
       #if there is a record, check to see if password matches
       if user.authenticate(pw)
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         redirect_to("/", {:notice => "Welcome back" + user.username + "!"})
       else
       #if not, redirect back to the sign in form   
-      redirect_to("/users_sign_in", {:alert => "Nice try!"})
+      redirect_to("/user_sign_in", {:alert => "Nice try!"})
       end
     end
   end
@@ -67,9 +67,9 @@ class UsersController < ApplicationController
     if save_status == true
       session.store(:user_id, user.id)
 
-      redirect_to("/users/#{user.username}", {:notice => "Welcome," + user.username + "!" })
+      redirect_to("/user/#{user.username}", {:notice => "Welcome," + user.username + "!" })
     else
-      redirect_to("/users_sign_up", {:alert => user.errors.full_messages.to_sentence})
+      redirect_to("/user_sign_up", {:alert => user.errors.full_messages.to_sentence})
     end
   end
 
@@ -82,7 +82,7 @@ class UsersController < ApplicationController
 
     user.save
     
-    redirect_to("/users/#{user.username}")
+    redirect_to("/user/#{user.username}")
   end
 
   def destroy
@@ -91,7 +91,7 @@ class UsersController < ApplicationController
 
     user.destroy
 
-    redirect_to("/users")
+    redirect_to("/user")
   end
 
 end
