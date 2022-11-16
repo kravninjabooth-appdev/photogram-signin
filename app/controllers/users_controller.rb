@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     #get the password from params
 
     #look up record from the matching db matching username
-    user = User.where({:username => "un"}).at(0)
+    user = User.where({:username => un}).at(0)
 
     #if there is no record, redirect back to sign in form
     if user == nil
