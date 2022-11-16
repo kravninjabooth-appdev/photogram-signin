@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get("/users_sign_in", {:controller => "users", :action => "new_session_form"})
 
+  post("/verify_credentials", {:controller => "users", :action => "authenticate"})
+
   # CREATE
   get("/insert_user_record", {:controller => "users", :action => "create" })
 

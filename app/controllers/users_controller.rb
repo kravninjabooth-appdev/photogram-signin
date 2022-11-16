@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def authenticate
+    render({:plain => "hi"})
+  end
+  
   def toast
     reset_session
 
